@@ -1,0 +1,16 @@
+{% extends "library/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">UPLOAD RESOURCE</legend>
+                {{ form }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">POST</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+{% block sidebar %}{% endblock sidebar %}

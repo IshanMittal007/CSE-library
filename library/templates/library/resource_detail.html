@@ -1,0 +1,20 @@
+{% extends "library/base.html" %}
+{% load static %}
+{% block content %}
+<h1>CSE Resource Library</h1>
+<p>Welcome to the library. Here you can find all notes and PDFs</p>
+
+  <div class="content-section">
+    <h3>{{ resource.title }}</h3>
+    <p>{{ resource.description }}</p>
+    {% if user.is_staff %}
+    <div>
+      <a class="btn btn-secondary mb-1" href="{% url 'library-update' object.id %}"> UPDATE </a>
+      <a class="btn btn-danger mb-1" href="{% url 'library-delete' object.id %}"> DELETE </a>
+    </div>
+    {% endif %}
+    <a class="btn btn-outline-warning" href="{{ resource.file.url }}" download> Download file </a>
+   </div>
+   
+{% endblock content %}
+{% block sidebar %}{% endblock sidebar %}

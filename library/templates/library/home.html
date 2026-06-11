@@ -1,0 +1,31 @@
+{% extends "library/base.html" %}
+{% load static %}
+{% block content %}
+<h1>CSE Resource Library</h1>
+<p>Welcome to the library. Here you can find all notes and PDFs</p>
+{% for subject in subjects %}
+  {% if subject.resources.all%}
+   <div class="subject-row-container mb-5">
+    <h3 calss="text-uppercase tracking-wide text-secondary mb-3">{{ subject.name }}</h3>
+    <div class="d-flex flex-row flex-nowrap overflow-auto pb-3" style="gap: 1.5rem">
+      {% for resource in subject.resources.all %}
+       <div class="card shadow-sm flex-shrink-0" style="width: 18rem; border-radius: 10px">
+        <div class="card-body d-flex flex-colum justify-content-between">
+        </div>
+        <div class="content-section">
+         <h3>
+           <a href="{% url 'library-detail' resource.id %}" style="text-decoration: none; color: inherit;">
+             {{ resource.title }}
+           </a>
+          </h3>
+          <p>{{ resource.description }}</p>
+          <a class="btn btn-outline-warning" href="{{ resource.file.url }}" download> Download file </a>
+       </div>
+      </div>
+      {% endfor %}
+   </div>
+   </div>
+  {% endif %} 
+{% endfor %}
+{% endblock content %}
+{% block sidebar %}{% endblock sidebar %}

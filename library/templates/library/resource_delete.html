@@ -1,0 +1,17 @@
+{% extends "library/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">DELETE RESOURCE</legend>
+                {{ form }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">DELETE</button>
+                <a class="btn btn-outline-secondary" href="{% url 'library-detail' object.id %}">CANCEL</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+{% block sidebar %}{% endblock sidebar %}
